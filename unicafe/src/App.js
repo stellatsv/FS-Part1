@@ -35,7 +35,7 @@ const App = () => {
   }
 
   const calcPositive = (good, bad, neutral) => {
-    setPositive(good / (good + bad + neutral))
+    setPositive(good / (good + bad + neutral) + "%")
   }
 
   return (
@@ -68,13 +68,18 @@ const Statistics = (props) => {
     )
   }
   return ( <div>
-      <p> Good {props.good} </p>
-      <p> Neutral {props.neutral} </p>
-      <p> Bad {props.bad}</p>
-      <p> Average {props.average}</p>
-      <p> Positive {props.positive}</p>
+    <StatisticLine text="Good" value ={props.good} />
+    <StatisticLine text="Neutral" value ={props.neutral} />
+    <StatisticLine text="Bad" value ={props.bad} />
+    <StatisticLine text="Average" value ={props.average} />
+    <StatisticLine text="Positive" value ={props.positive} />
     </div> )
   
 }
 
+const StatisticLine = (props) => (
+  <div>
+    <p> {props.text} {props.value} </p>
+  </div>
+)
 export default App
