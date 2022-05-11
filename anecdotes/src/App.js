@@ -12,17 +12,27 @@ const App = () => {
   ]
    
   const [selected, setSelected] = useState(0)
+  const [points, setVoted] = useState(new Array(6).fill(0))
 
   const nextAnecdote = () => {
     const index = generateRandom()
     setSelected(index)
   }
 
+  const setVote = () => {
+    const index = selected
+    const copy = [...points]
+    copy[index]+=1
+    setVoted(copy)
+  }
+
   return (
     <div>
       {anecdotes[selected]}
-      <p></p>
-      <Button onClick={() => nextAnecdote()}/>
+      <p>Votes: {points[selected]}</p>
+      <p></p>      
+      <Button onClick={() => nextAnecdote()} text="next anecdote"/>
+      <Button onClick={() => setVote()} text="vote"/>
     </div>
   )
 }
@@ -34,7 +44,7 @@ function generateRandom(){
 }
 
 const Button = (props) => (
-  <button onClick={props.onClick}> next anecdote</button>
+  <button onClick={props.onClick}> {props.text}</button>
 )
 
 
