@@ -25,7 +25,6 @@ const App = () => {
 
   const neutralClick = () => {
 	  const newValue = neutral + 1
-    console.log('neutral now', newValue)
     setNeutral(newValue)
     calcAverage(good, bad, newValue)
     calcPositive(good, bad, newValue)
@@ -59,14 +58,23 @@ const Button = (props) => (
 	</button>
 )
 
-const Statistics = (props) => (
-  <div>
-    <p> Good {props.good} </p>
-    <p> Neutral {props.neutral} </p>
-    <p> Bad {props.bad}</p>
-    <p> Average {props.average}</p>
-    <p> Positive {props.positive}</p>
-  </div>
-)
+const Statistics = (props) => {
+  console.log('neutral now', props.neutral)
+  if (props.good === 0 && props.bad === 0 && props.neutral === 0) {   
+    return (
+      <div>
+        <p>No feedback given</p>      
+      </div>
+    )
+  }
+  return ( <div>
+      <p> Good {props.good} </p>
+      <p> Neutral {props.neutral} </p>
+      <p> Bad {props.bad}</p>
+      <p> Average {props.average}</p>
+      <p> Positive {props.positive}</p>
+    </div> )
+  
+}
 
 export default App
