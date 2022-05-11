@@ -48,11 +48,7 @@ const App = () => {
 			<Button handleClick={() => badClick()} text="Bad" />
 		</p>
 	  <h>Statistics</h>
-	  <Statistic text="Good" number={good}></Statistic>
-	  <Statistic text="Neutral" number={neutral}></Statistic>
-	  <Statistic text="Bad" number={bad}></Statistic>
-	  <Statistic text="Average" number={average}></Statistic>
-	  <Statistic text="Positive" number={positive}></Statistic>
+      <Statistics good={good} bad={bad} neutral={neutral} average={average} positive={positive} />
     </div>
   )
 }
@@ -63,7 +59,14 @@ const Button = (props) => (
 	</button>
 )
 
-const Statistic = (props) => (
-	<p>{props.text} {props.number}</p>
+const Statistics = (props) => (
+  <div>
+    <p> Good {props.good} </p>
+    <p> Neutral {props.neutral} </p>
+    <p> Bad {props.bad}</p>
+    <p> Average {props.average}</p>
+    <p> Positive {props.positive}</p>
+  </div>
 )
+
 export default App
